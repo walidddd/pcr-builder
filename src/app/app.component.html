@@ -1,0 +1,23 @@
+
+<nav class="navbar navbar-expand-lg navbar-light " dir="ltr" *ngIf="isUser">
+  <div class="container-fluid">
+    <img src="../assets/logo/user.png" alt="" srcset="">
+    <a class="navbar-brand" >{{user.name}} <i class="fas fa-angle-down"></i> </a>
+    <button class="navbar-toggler" type="button"  (click)="fadeNav()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" dir="rtl">
+      <div class="navbar-nav">
+        <a class="nav-link " routerLink="users" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="isUser">الرئيسية </a>
+        <a class="nav-link" routerLink="add-user" routerLinkActive="active"  [routerLinkActiveOptions]="{exact:true}" *ngIf="isUser">اضافة عميل جديد</a>
+        <a class="nav-link" routerLink="search-report" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"  *ngIf="halfadmin">البحث عن تقرير</a>
+        <a class="nav-link" routerLink="our-users" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"  *ngIf="admin">احصائيات جميع المستخدمين</a>
+        <a class="nav-link" routerLink="all-clients" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"  *ngIf="admin">جميع عملاء Saif Aldin</a>
+
+        <button (click)="logOut()" *ngIf="isUser">تسجيل الخروج</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

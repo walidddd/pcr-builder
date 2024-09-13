@@ -1,0 +1,50 @@
+form {
+  display: flex;
+  direction: ltr;
+  align-items: center;
+  .form-input {
+    text-align: center;
+    text-align: left;
+    input,
+    select {
+      width: 100%;
+    }
+    .id {
+      width: 50%;
+    }
+  }
+}
+.window-up .window-delete {
+  height: 240 px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.qr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.make-qr {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  button {
+    width: 112px;
+  }
+}
+.no3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  h2 {
+    text-align: center;
+    padding: 15px 0;
+    font-family: "Cairo";
+    color: #1055bb;
+  }
+}

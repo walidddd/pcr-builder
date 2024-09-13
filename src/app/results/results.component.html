@@ -1,0 +1,167 @@
+<section class="result " dir="ltr" id="print-section"  >
+    <div class="container-fuild"  >
+        <div class="header" dir="rtl">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="../../assets/pcr/right-logo.svg" class="right" alt="" srcset="">
+                </div>
+                <div class="col text-center">
+                    <img src="../../assets/pcr/center.svg" alt="" class="center" srcset="">
+                </div>
+                <div class="col end text-left">
+                    <img src="../../assets/pcr/left.svg" alt="" clsas="image-left" srcset="">
+                </div>
+            </div>
+        </div>
+        <div class="box-data-user">
+            <div class="name">
+                        <h6 class="ar">{{userData.name}} </h6>
+                        <div class="en">
+                            <h6 class="label">Name :</h6>  <h6 style="text-transform: uppercase;">{{userData.nameen}}  </h6>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <ul>
+                        <li><span class="label">Gender :</span> {{userData.gender}}</li>
+                        <li><span class="label">DOB :</span> {{userData.dob}} </li>
+                        <li><span class="label">Nationality :</span> {{userData.nationality}}</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <img src="{{userData.imagePath}}" alt="">
+                </div>
+                <div class="col-md-5">
+                    <ul>
+                        <li><span class="label">Passport :</span> {{userData.id}} </li>
+                        <li><span class="label">Reg. Date :</span> {{userData.regdate}} {{userData.regtime}}</li>
+                        <li><span class="label repo">Repoted Date :</span> {{userData.repoteddate}} {{userData.repotedtime}}</li>
+                    </ul>
+                </div>
+                <div class="col-md-2 qr">
+                    <qr-code value="{{url}}"   size="250" errorCorrectionLevel="M" class="qr-code"></qr-code>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <h5 class="titlex">
+                MOLECULAR BIOLOGY
+            </h5>
+        </div>
+        
+          
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Test</th>
+                <th scope="col">Result</th>
+                <th scope="col">Unit</th>
+                <th scope="col">Ref. Range</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="color">COVID-19 by RT-PCR:</span></td>
+                <td class="done" [class]="{'red': userData.result == 'Positive '}">{{userData.result}}</td>
+                <td>N/A</td>
+                <td>{{userData.result}}</td>
+
+              </tr>
+        
+            </tbody>
+          </table>
+          <div class="pra">
+            <span>Specimen : </span>
+            <div>
+                <p class="one">
+                    Nasopharyngeal swab, Oropharyngeal swab Multiplex Real Time PCR
+                </p>
+                <p class="one">
+                   Multiplex Real Time PCR
+                </p>
+            </div>
+        </div>
+        <div class="pra">
+            <span class="span-2" >Note : </span>
+            <div>
+                <p>
+                    Sever Acute Respiratory Coronavirus 2 RNA Detection, is a qualitative PCR Test
+                </p>
+                <p>**Not Detected : Indecates that SARS COV-2 RNA is either not present in the specimen or is
+                    present at a concentration below the detection limit.
+                    </p>
+                <p>Limit of detection. This result may be influenced by the stage of the infection and the quality of
+                    the specimen collected for testing.
+                    </p>
+                <p>
+                    Repeat test is deemed necessary after 72 houts.
+                </p>
+                <p>
+                    **Detected: Indecates that SARS COV-2 RNA is present in the speciemen. Resutl should be
+interpreted in the context of all available lab. And clinical finding.
+                </p>
+                <span>
+                    ** limitaions:
+                </span>
+                <p>
+                    1. As all diagnostic tests, a definitive clinical diagnosis should not be based on the result of
+single test but should only be made after all clinical and laboratory finding have been
+evaluated. Collection of multiple specimens may be necessary to detect the virus.
+                </p>
+                <p>
+                    2. A false negative result may be occur if the specimen is improperly collected, transported or
+handled. False negative result may also occur if amplification inhibitors are present in the
+specimen or if inadequate numbers of organisms are present in the specimen.
+                </p>
+                <p>
+                    3. if the virus mutates in the rRT-PCR target region, 2019-nVoV may not be detected or may be
+detected-less predictably. Inhibitors or other types of interference may produce a false negative
+result.
+                </p>
+                <p>
+                    4. This test cannot rule out diseases caused by other bacterial or viral pathogens.
+
+                </p>
+
+            </div>
+        </div>
+        
+        <div class="made">
+            <div class="row">
+                <div class="col image-next">
+                    <h6 class="abrove">Approved by : </h6>
+                    <h5>Dr: A M ELKRAGY</h5>
+                    <h6>Consultant MICROBIOLOGIST
+                    </h6>
+                </div>
+                <div class="col ">
+                    <img src="../../assets/pcr/image-003.jpg" alt="" srcset="">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</section>
+<div class="create">
+    <div class="container  text-left">
+        <button (click)="print()" class="Print">Create a PDF</button>
+        <button (click)="backEdit()" class="Print">Back To Edit</button>
+    </div>
+</div>
+<div id="window-add" class="window-up d-none Print" dir="ltr" >
+    <div class="pop-up window-delete text-center">
+      <h4>Do you want to upload the file?</h4>
+       <h4 class="d-none" id="load">Loading</h4>
+       <form action="" class="text-center" #f="ngForm" (ngSubmit)="onAdd(f)">
+           <label for="">File Result Pdf :</label>
+           <input type="file" name="filePath" (change)="uploadAdd($event)" >
+           <div class="buttons" id="buttons">
+            <button type="button" (click)="fadeOutDelete()" id="button1">cancel</button>
+            <button type="submit"  id="button2">Add</button>
+          </div>
+       </form>
+        
+    </div>
+</div>

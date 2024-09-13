@@ -1,0 +1,74 @@
+
+<div class="profile text-center">
+    <div class="image-user">
+        <img src="../../assets/logo/logo.jpg" alt="" srcset="">
+        <h6>جميع عملاء Saif Aldin</h6>
+    </div>
+    <div class="statistics">
+        <ul>
+            <li>
+                <h6> <i class="fas fa-address-book"></i> عدد جميع العملاء</h6> <span>{{saifData.length}}</span>
+            </li>
+  
+            <li>
+                <h6> <i class="fas fa-users"></i> عدد العملاء اليوم</h6> <span>{{filterDataDay.length}}</span>
+            </li>
+            <li>
+              <h6> <i class="far fa-calendar-alt"></i> عدد العملاء خلال هذ الشهر</h6> <span>{{filterDataMonth.length}}</span>
+          </li>
+        </ul>
+    </div>
+</div>
+<div class="filter container">
+  <div class="row">
+    <div class="col-md-6">
+      <label for="">اختبار تاريخ محدد :</label>
+      <input type="date" class="form-control" placeholder="Search" #filterx (change)="filter(filterx.value)">
+    </div>
+    <div class="col-md-6">
+      <label for="">اختيار مستخدم محدد :</label>
+      <select name="" id="" class="form-control"  #user (change)="filterUser(user.value)">
+        <option value="">الجميع</option>
+        <option value="{{user.uid}}" *ngFor="let user of dataUsers; index as i; first as isFirst">{{user.name}}</option>
+      </select>
+    </div>
+  </div>
+  <button (click)="search()">بحث</button>
+  
+</div>
+<div class="container-fuild">
+    <ng2-smart-table class="lecturestable" [settings]="settings" [source]="filterData" (deleteConfirm)="onDeleteConfirm($event)" (custom)="onCustomAction($event)"  ></ng2-smart-table>
+</div>
+<div class="window-qr  d-none" id="window">
+    <div class="popupwindow">
+        <button (click)="exite()" id="exite">X</button>
+      <qr-code value="{{url}}" size="300" errorCorrectionLevel="M" class="qr-code"></qr-code>
+      <h6>{{url}}</h6>
+    </div>
+  </div>
+  <div id="window-delete" class="window-up d-none" >
+    <div class="pop-up window-delete text-center">
+      <h4>? Are you sure to delete </h4>
+        <table class="table">
+            <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr >
+                    <th scope="row">{{deleteItem.name}}</th>
+                    <th scope="row">{{deleteItem.nameen}}</th>
+                    <th scope="row">{{deleteItem.result}}</th>
+                </tr>
+                </tbody>
+        </table>
+        
+        <div class="buttons">
+          <button (click)="fadeOutDelete()">cancel</button>
+            <button (click)="onfadeOutDelete()">delete</button>
+        </div>
+    </div>
+</div>  

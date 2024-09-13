@@ -1,0 +1,70 @@
+<section class="header" dir="ltr">
+    <div class="container">
+        <img src="../../assets/logo/logo (1).svg" alt="">
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Name</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{{userData.name}}</th>
+              <td>{{userData.nameen}}</td>
+             
+            </tr>
+          
+          </tbody>
+        </table>
+        <table class="table">
+          <thead>
+              <tr>
+                <th scope="col">Passport</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">{{userData.id}}</th>
+               
+              </tr>
+            
+            </tbody>
+          </table>
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Test</th>
+              <th scope="col">Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              
+              <td>COVID-19 by RT-PCR</td>
+              <td [class]="{'red': userData.result == 'Positive '}">{{userData.result}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                  
+                  <th scope="col">Reg. Date</th>
+                  <th scope="col">Repoted Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  
+               
+                  <td>{{userData.regdate}} :: {{userData.regtime}}</td>
+                  <td>{{userData.repoteddate}} :: {{userData.repotedtime}}</td>
+                </tr>
+              </tbody>
+            </table>
+    <a href="{{userData.filePath}}" id="click">تحميل الملف</a>
+    </div>
+</section>

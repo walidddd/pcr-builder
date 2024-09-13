@@ -1,0 +1,50 @@
+.window-qr {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  .popupwindow {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color: #dfdbd5;
+    position: relative;
+    z-index: 100;
+  }
+}
+#exite {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30px;
+  padding: 0;
+  height: 30px;
+}
+.qr-code {
+  margin: 10px 0;
+}
+form {
+  display: flex;
+  direction: ltr;
+  justify-content: center;
+  align-items: center;
+  .form-input {
+    text-align: center;
+  }
+}
+h4 {
+  color: #ff0000;
+  margin-bottom: 16px;
+  font-weight: 900;
+  font-family: tahoma;
+}
+.container-fuild {
+  margin: 25px 0;
+}

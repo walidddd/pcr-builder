@@ -1,0 +1,109 @@
+<div class="profile text-center">
+    <div class="image-user">
+        <img src="../../assets/logo/user.png" alt="" srcset="">
+        <h6>{{userInformation.name}}</h6>
+    </div>
+    <div class="statistics">
+        <ul>
+            <li>
+                <h6> <i class="fas fa-address-book"></i> عدد جميع العملاء</h6> <span>{{userInformation.length}}</span>
+            </li>
+  
+            <li>
+                <h6> <i class="fas fa-users"></i> عدد العملاء اليوم</h6> <span>{{userInformation.lengthToday}}</span>
+            </li>
+            <li>
+              <h6> <i class="far fa-calendar-alt"></i> تاريخ اليوم</h6> <span>{{userInformation.dateFrom}}</span>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <div class="search-by text-center">
+    <h2 class="text-center"> البحث عن تقرير <h6>(جميع معامل سيف الدين)</h6></h2>
+    <div class="buttons">
+        <button id="addpass" class="active" (click)="fadePass()">بواسطة رقم الباسبور</button>
+        <button id="addname" (click)="fadeName()">بواسطة الاسم</button>
+    </div>
+    <div class="container">
+        <div class="search-by-pass " id="pass">
+            <input type="text" class="form-control"   placeholder ="ادخل رقم الباسبور" #pass>
+            <div class="text-left">
+                <button id="searchClick" (click)="searchPss(pass)">بحث</button>
+            </div>
+        </div>
+        <div class="search-by-pass d-none" id="name">
+            <input type="text" class="form-control" #name  placeholder ="ادخل  الاسم عربي">
+            <div class="text-left">
+                <button (click)="searchName(name)">بحث</button>
+            </div>
+        </div>
+    </div>
+  </div>
+<div class="container-fuild ta d-none" id="done">
+    <table class="table table-striped ">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">nameen</th>
+            <th scope="col">nationality</th>
+            <th scope="col">Reg. Date</th>
+            <th scope="col"> Reg. Time </th>
+            <th scope="col"> Repoted Date </th>
+            <th scope="col"> Repoted Time</th>
+            <th scope="col"> result </th>
+            <th scope="col">تاريخ الاضافة</th>
+            <th scope="col"> dob </th>
+            <th scope="col"> Passport ID </th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let filterData of filterData; index as i; first as isFirst">
+            <td>{{filterData.name}}</td>
+            <td>{{filterData.nameen}}</td>
+            <td>{{filterData.nationality}}</td>
+            <td>{{filterData.regdate}}</td>
+            <td>{{filterData.regtime}}</td>
+            <td>{{filterData.repoteddate}}</td>
+            <td>{{filterData.repotedtime}}</td>
+            <td>{{filterData.result}}</td>
+            <td>{{filterData.dateTime}}</td>
+            <td>{{filterData.dob}}</td>
+            <td>{{filterData.id}}</td>
+            <td><button (click)="deleteClient(filterData)">حذف</button></td>
+            <td><button (click)="goEdit(filterData)">تعديل</button></td>
+            <td><button (click)="open(filterData.id)">فتح</button></td>
+
+          </tr>
+        </tbody>
+      </table>
+</div>
+<div id="window-delete" class="window-up d-none" >
+    <div class="pop-up window-delete text-center">
+      <h4>? Are you sure to delete </h4>
+        <table class="table">
+            <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr >
+                    <th scope="row">{{deleteItem.name}}</th>
+                    <th scope="row">{{deleteItem.nameen}}</th>
+                    <th scope="row">{{deleteItem.result}}</th>
+                </tr>
+                </tbody>
+        </table>
+        
+        <div class="buttons">
+          <button (click)="fadeOutDelete()">cancel</button>
+            <button (click)="onfadeOutDelete()">delete</button>
+        </div>
+    </div>
+</div>  

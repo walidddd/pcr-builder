@@ -1,0 +1,134 @@
+<div class="profile text-center">
+  <div class="image-user">
+      <img src="../../assets/logo/logo.jpg" alt="" srcset="">
+      <h6>احصائيات جميع معامل Saif Aldin</h6>
+  </div>
+  <div class="statistics">
+      <ul>
+          <li>
+              <h6> <i class="fas fa-address-book"></i> عدد جميع العملاء</h6> <span>{{saifData.length}}</span>
+          </li>
+
+          <li>
+              <h6> <i class="fas fa-users"></i> عدد العملاء اليوم</h6> <span>{{filterDataDay.length}}</span>
+          </li>
+          <li>
+            <h6> <i class="far fa-calendar-alt"></i> عدد العملاء خلال هذ الشهر</h6> <span>{{filterDataMonth.length}}</span>
+        </li>
+      </ul>
+  </div>
+</div>
+<section class="our-clients">
+    <div class="container-fuild">
+        <h2 class="text-center titlee">جميع المستخدمين</h2>
+        <div class="button-add text-left">
+          <button (click)="fadeForm()">اضافة مستخدم جديد</button>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">اسم المستخدم</th>
+                <th scope="col">عدد العملاء التي تم اضافتهم</th>
+                <th scope="col">عدد العملاء - ( حسب يوم )</th>
+                <th scope="col">عدد العملاء - ( حسب الشهر )</th>
+                <th scope="col">وقت وتاريخ أخر اضافة للمستخدم</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of dataUsers; index as i; first as isFirst">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{user.name}}</td>
+                <td>{{user.length}}</td>
+                <td>{{user.lengthToday}} - ({{user.dateFrom}})</td>
+                <td>{{user.lengthMonth}} - ({{user.dateMonth}})</td>
+                <td dir="ltr">{{user.dateTimeEnd}}</td>
+                <td dir="ltr"><button class="act" *ngIf="user.admin === false" (click)="showEmail(user)">ايميل المستخدم </button></td>
+                <td dir="ltr"><button class="act" *ngIf="user.admin === false" (click)="delete(user)">حذف المستخدم </button></td>
+                <td dir="ltr"><button class="act">حظر  مؤقت</button></td>
+              </tr>
+            
+            
+            </tbody>
+          </table>
+    </div>
+</section>
+<div class="window  d-none" id="window">
+  <div class="popupwindow">
+      <button (click)="exite()" id="exite">X</button>
+      <h5 class="text-center">اضافة مستخدم جديد</h5>
+      <form #f="ngForm" (ngSubmit)="onAdd(f)" >
+        <div class="row">
+          <div class="col-md-6">
+            <label for="">اسم المستخدم</label>
+            <input type="text" name="name" placeholder="اسم المستخدم" ng-value="ngModel" ngModel>
+          </div>
+          <div class="col-md-6">
+            <label for="">البريد الالكتروني</label>
+            <input type="email" name="email" placeholder="البريد الالكتروني" ng-value="ngModel" ngModel>
+          </div>
+          <div class="col-md-6">
+            <label for="">كلمة المرور</label>
+            <input type="password" name="password"  ng-value="ngModel" ngModel>
+          </div>
+          <div class="col-md-6">
+            <label for="">صلاحيات</label>
+            <select name="searchReport" id="" ngModel>
+              <option value="false"> مستخدم فقط</option>
+              <option value="true"> تعديل وحذف على جميع التقارير</option>
+            </select>
+          </div>
+          <div class="col-md-12 add-end"><button type="submit" >اضافة</button></div>
+        </div>
+      </form>
+  </div>
+</div>
+<div id="window-d" class="window d-none" >
+  <div class="pop-up window-delete text-center">
+    <h4>? هل انت متأكد من حذف المستخدم </h4>
+      <table class="table">
+          <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                  <th scope="row">{{deleteItem.name}}</th>
+                  <th scope="row">{{deleteItem.email}}</th>
+              </tr>
+              </tbody>
+      </table>
+      <div class="buttons">
+        <button (click)="fadeOutDelete()">cancel</button>
+          <button (click)="onfadeOutDelete()">delete</button>
+      </div>
+  </div>
+</div>
+<div id="window-email" class="window d-none" >
+  <div class="pop-up window-delete text-center">
+    <button (click)="exite()" id="exite">X</button>
+      <table class="table">
+          <thead>
+              <tr>
+                <th scope="col">Email</th>
+                <th scope="col">password</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                  <th scope="row">{{email.email}}</th>
+                  <th scope="row">{{email.password}}</th>
+
+              </tr>
+              </tbody>
+      </table>
+   
+  </div>
+</div>
